@@ -9,12 +9,10 @@
 
 Please enter the path to an image file:
 
-<form action="/result" method="POST">
-    Path:<br>
-    <input type="text" name="path" value="/home/test.jpg">
-    <br>
 
-    <input type="submit" value="Submit">
+<form method=post enctype=multipart/form-data action="/result">
+      <p><input type=file name=photo>
+         <input type=submit value=Upload>
 </form>
 
 
