@@ -1,16 +1,9 @@
 
 from flask import Flask, render_template, request
+from import classify_dogs import *
 
 # Flask instance
 app = Flask(__name__)
-
-#from classify_dogs import classify_dog_breed, VGG19_predict_breed
-
-# import all python functions
-#from import
-
-# load model - see import
-#VGG19_model.load_weights('saved_models/weights.best.VGG19.hdf5')
 
 # define variables here
 testvar='teststr'

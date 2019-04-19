@@ -1,9 +1,20 @@
 # import necessary libraries
-from keras.callbacks import ModelCheckpoint
+#from keras.callbacks import ModelCheckpoint
+
+
+# load model
+# reference to file path
+#VGG19_model.load_weights('saved_models/weights.best.VGG19.hdf5')
+print('Loading model \n')
+from load_model import *
 
 
 # import predict method
-from extract_bottleneck_features import *
+#from extract_bottleneck_features import *
+def extract_VGG19(tensor):
+	from keras.applications.vgg19 import VGG19, preprocess_input
+	return VGG19(weights='imagenet', include_top=False).predict(preprocess_input(tensor))
+
 
 def VGG19_predict_breed(img_path):
     # extract bottleneck features
@@ -12,10 +23,6 @@ def VGG19_predict_breed(img_path):
     predicted_vector = VGG19_model.predict(bottleneck_feature)
     # return dog breed that is predicted by the model
     return dog_names[np.argmax(predicted_vector)]
-
-# load model
-# reference to file path
-VGG19_model.load_weights('saved_models/weights.best.VGG19.hdf5')
 
 
 # algorithm as function
