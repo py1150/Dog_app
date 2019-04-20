@@ -4,7 +4,8 @@ import pdb
 # import necessary libraries
 #from keras.callbacks import ModelCheckpoint
 import numpy as np
-
+from keras import backend as K
+K.clear_session()
 
 # load face detector
 #-------------------
@@ -149,12 +150,14 @@ def classify_dog_breed(img_path):
     if image_type['dog']==True:
         print('The image shows a dog.\n')
         prediction=VGG19_predict_breed(img_path)
+        #K.clear_session()
         print('Predicted breed: %s' %prediction[15:len(prediction)])
         return(prediction[15:len(prediction)])
 
     elif image_type['human']==True:
         print('The image shows a human.')
         prediction=VGG19_predict_breed(img_path)
+        #K.clear_session()
         print('Resembled breed: %s' %prediction[15:len(prediction)])
         return(prediction[15:len(prediction)])
         # show example image

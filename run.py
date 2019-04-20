@@ -3,8 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from werkzeug.utils import secure_filename
 
-print('start import classify_dogs')
-from classify_dogs import *
 
 
 # file upload
@@ -15,6 +13,12 @@ from classify_dogs import *
 
 # Flask instance
 app = Flask(__name__)
+
+print('start import classify_dogs')
+from classify_dogs import *
+graph = tf.get_default_graph()
+
+
 
 # define upload set
 photos=UploadSet('photos',IMAGES)
@@ -30,9 +34,9 @@ testvar='teststr'
 
 # test prediction
 #test_image='/home/bernd/Pictures/Dachshund.jpg'
-test_image='/home/bernd/Documents/Python/Dog_app/static/images/Dachshund.jpg'
-test_pred=classify_dog_breed(test_image)
-print(test_pred)
+#test_image='/home/bernd/Documents/Python/Dog_app/static/images/Dachshund.jpg'
+#test_pred=classify_dog_breed(test_image)
+#print(test_pred)
 
 #def allowed_file(filename):
 #	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -71,9 +75,11 @@ def index():
 def result():
     if request.method=='POST' and 'photo' in request.files:
        filename=photos.save(request.files['photo'])
-       pred=classify_dog_breed('/home/bernd/Documents/Python/Dog_app/static/images/'+filename)
+       global graph
+       with graph.as_default():
+        pred=classify_dog_breed('/home/bernd/Documents/Python/Dog_app/static/images/'+filename)
        fullname='/home/bernd/Documents/Python/Dog_app/static/images/'+filename
-       return render_template('result.html', userval=filename, fullname=fullname)
+       return render_template('result.html', userval=filename, fullname=fullname, pred=pred)
 
     #if request.method=='POST' and 'photo' in request.files:
     #    filename = photos.save(request.files['photo'])

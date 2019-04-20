@@ -3,6 +3,7 @@ from keras.layers import Dropout, Flatten, Dense
 from keras.models import Sequential
 from keras.layers import Activation
 from keras.callbacks import ModelCheckpoint
+import tensorflow as tf
 
 # model architecture
 VGG19_model = Sequential()
@@ -20,3 +21,4 @@ VGG19_model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metric
 
 # load weights
 VGG19_model.load_weights('saved_models/weights.best.VGG19.hdf5')
+
