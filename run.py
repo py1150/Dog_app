@@ -30,7 +30,7 @@ configure_uploads(app,photos)
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # define variables here
-testvar='teststr'
+#testvar='teststr'
 
 # test prediction
 #test_image='/home/bernd/Pictures/Dachshund.jpg'
