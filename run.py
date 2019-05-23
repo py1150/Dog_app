@@ -49,7 +49,7 @@ def index():
      #   filename=photos.save(request.files['photo'])
       #  return filename
         #flash('File(s) successfully uploaded')
-    return render_template('home.html')
+    return render_template('home2.html')
 
 
         # check if the post request has the file part
@@ -77,9 +77,9 @@ def result():
        filename=photos.save(request.files['photo'])
        global graph
        with graph.as_default():
-        pred=classify_dog_breed('/home/bernd/Documents/Python/Dog_app/static/images/'+filename)
+        i_type, pred=classify_dog_breed('/home/bernd/Documents/Python/Dog_app/static/images/'+filename)
        fullname='/home/bernd/Documents/Python/Dog_app/static/images/'+filename
-       return render_template('result.html', userval=filename, fullname=fullname, pred=pred)
+       return render_template('result2.html', userval=filename, fullname=fullname, pred=pred, i_type=i_type)
 
     #if request.method=='POST' and 'photo' in request.files:
     #    filename = photos.save(request.files['photo'])
@@ -88,7 +88,7 @@ def result():
 
     #    img_path=request.form['path']
     #else:
-    return render_template('home.html')
+    return render_template('home2.html')
 
 if __name__ == '__main__':
     app.secret_key = '123'

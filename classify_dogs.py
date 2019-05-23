@@ -148,18 +148,20 @@ def classify_dog_breed(img_path):
 
     # Predict and print output
     if image_type['dog']==True:
+        i_type = 'dog'
         print('The image shows a dog.\n')
         prediction=VGG19_predict_breed(img_path)
         #K.clear_session()
         print('Predicted breed: %s' %prediction[15:len(prediction)])
-        return(prediction[15:len(prediction)])
+        return(i_type, prediction[15:len(prediction)])
 
     elif image_type['human']==True:
+        i_type='human'
         print('The image shows a human.')
         prediction=VGG19_predict_breed(img_path)
         #K.clear_session()
         print('Resembled breed: %s' %prediction[15:len(prediction)])
-        return(prediction[15:len(prediction)])
+        return(i_type, prediction[15:len(prediction)])
         # show example image
         search=prediction[15:len(prediction)]
         test_list=[name for name in train_files if search in name]
