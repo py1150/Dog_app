@@ -15,31 +15,38 @@ Technically, the web app is depicted by the following procedure:
 Contained files and folders
 ----------------------------
 
--/saved_models
+- /saved_models
 	contains all models the web app is using
--/static
+- /static
 	contains style.css to add style to the html files of the web app
+	
 	/static/images
+	
 		folder is used to store the uploaed images
--/templates
+- /templates
 	contains all html files needed to run the application
+	
 	The app consists of two different sites which are displayed: 
 	- home2.html: home page to prompt the user to upload an image
 	- result2.html: site to display results of classification 
 	
--run.py
+- run.py
+
 	is used to execute the web application
 
--classify_dogs.py
+- classify_dogs.py
+
 	contains all functions and libraries necessary to carry out the classification and to provide the result
 	is imported by run.py
 
--load_model.py
+- load_model.py
+
 	loads the deep learning model to perform the classification
 	is imported by classify_dogs.py	
 	
 		
 Jupyter Notebook files:
+
 These files contain the Jupyter notebook which was used to derive all models. They are not necessary for running the web app.
 - dog_app.ipynb
 - dog_app.pdf 
