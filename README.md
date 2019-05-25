@@ -20,9 +20,9 @@ Contained files and folders
 - /static
 	contains style.css to add style to the html files of the web app
 	
-	/static/images
-	
-		folder is used to store the uploaed images
+- /static/images
+	folder is used to store the uploaed images
+		
 - /templates
 	contains all html files needed to run the application
 	
